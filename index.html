@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+
+<html ng-app="portfolioApp">
+
+<head>
+
+  <title>Karuzela / Slider Bootstrap</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="utf-8"><script type="text/javascript">/* <![CDATA[ */
+accConf = {"events":{"endpointPaths":["/a8f4d8cd95e164917035b64b867a45dd"]}};
+/* ]]> */</script>
+ 
+
+  <!-- Bootstrap -->
+
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="Stylesheet" type="text/css" href="https://kursbootstrap.pl/examples/docs.css" />
+  <style type="text/css">
+    .container {
+      padding-bottom: 50px;
+    }
+    .row {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  </style>
+<script src="respond.js"></script>
+<script src="angular.min.js"></script> 
+<script src="controllers.js"></script>
+</head>
+
+<body>
+
+
+
+<nav class="navbar navbar-fixed-top">
+
+<a href="#one-page"> INFO </a> 
+
+&nbsp;&nbsp;
+
+<a href="#two-page"> Kontakt </a>
+&nbsp;&nbsp;
+<a href="#unikalne-page">Portfolio </a>
+
+</nav> 
+
+
+
+<header>
+
+
+
+<section id="one-page" class="jumbotron">
+
+<div class="container">
+
+<h1>Karuzela</h1>
+
+<p>
+
+Karuzela czy też slider służy do tworzenia galerii obrazów które przewijamy za pomocą strzałek, bądź robi się to automatycznie. <br>
+
+Zwykle wykorzystywana jest ona w głównej części strony gdy chcemy na przykład pochwalić się swoim portfolio bądź przekazać informacji o kilku produktach.<br> 
+
+Należy pamiętać, że mało kto będzie przewijać 50 czy więcej slajdów więc lepiej zamieścić w niej rzeczy najważniejsze z naszego punktu widzenia.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<section  id="unikalne-page" ng-controller="GalleryListCtrl">
+<div class="container"></div>
+<h1>Portfolio</h1>
+<p>
+  teczka (także w sensie dosłownym lub np. segregator)
+   z przykładowymi pracami artysty, a w szerszym znaczeniu 
+   prezentacja dokonań danej osoby lub firmy, np. plik
+    zawierający próbki, przykłady i wizerunki wykonanych,
+     kompletnych prac, mogących być podstawą do oceny jej umiejętnoś
+   zdolności do pracy na danym stanowisku lub wykonania danego zadania.
+</p>
+<input ng-model="query">
+</select> 
+<label>Sortuj:</label>
+<select ng-model="orderProp" ng-options="sort as sort.label for
+sort in sortList">
+<option value="title">Alfabetycznie</option>
+<option value="when">Chronologicznie</option>
+</select> 
+  <div class="row">
+    <p>ilosc zdjec {{2*3}}</p>
+    <p ng-if="orderProp">Galerie ułożone: {{orderProp}}</p>
+    <div class="col-sm-4" ng-repeat="gallery in galleries | filter:
+query | orderBy: orderProp.value">  
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
+      <p>{{gallery.sekcja}}</p>
+      <span ng-non-bindable>{{gallery.when| date:'medium'}}</span>:
+    <span>{{gallery.when | date:'medium'}}</span><br>
+    </div>
+    <div class="col-sm-4">
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
+    </div>
+    <div class="col-sm-4">
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
+      <p>{{gallery.sekcja}}</p>
+    </div>
+    <div class="col-sm-4">
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
+    </div>
+    <div class="col-sm-4">
+      <img src="{{gallery.thumbnailUrl}}">
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="container">
+
+    <div class="row">
+
+      <h1>Karuzela / Slider z opisem</h1>
+
+
+
+      <div id="carouselID" class="carousel slide" data-ride="carousel">
+
+        <!-- Wskaźniki w postaci kropek -->
+
+        <ol class="carousel-indicators">
+          <li data-target="#carouselID" data-slide-to="0"class="active"></li>
+          <li data-target="#carouselID" data-slide-to="1"></li>
+          <li data-target="#carouselID" data-slide-to="2"></li>
+          <li data-target="#carouselID" data-slide-to="3"></li>
+         </ol> 
+
+
+
+
+        <!-- Slajdy -->
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="item active">
+
+            <img src="o1.jpg" alt="" width="100%">
+
+            <!-- Opis slajdu -->
+
+            <div class="carousel-caption">
+
+              <h3>Pomeranian</h3>
+
+              <p>spokojny temperament sprawia , że nie będzie sprawiał problemów.</p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="item">
+
+            <img src="o2.jpg" alt="" width="100%">
+
+            <!-- Opis slajdu -->
+
+            <div class="carousel-caption">
+
+              <h3>Bernardyn</h3>
+
+              <p>przyjazna natura i miłość do dzieci czynią go popularnym psem rodzinnym</p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="item">
+
+            <img src="o3.jpg" alt="" width="100%">
+
+            <!-- Opis slajdu -->
+
+            <div class="carousel-caption">
+
+              <h3>Amstaff</h3>
+
+              <p>Amstaff to pies pełen sprzeczności. Jedni powierzają mu swoje dzieci, inni się go boją</p>
+
+            </div>
+
+          </div>
+
+
+
+		  <div class="item">
+
+            <img src="o4.jpg" alt="" width="100%">
+
+            <!-- Opis slajdu -->
+
+            <div class="carousel-caption">
+
+              <h3>Samojed</h3>
+
+              <p>Cechuje go żywy temperament i duża potrzeba ruchu.</p>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <!-- Strzałki do przewijania -->
+
+        <a class="left carousel-control" href="#carouselID" role="button"
+        data-slide="prev">
+         <span class="glyphicon glyphicon-chevron-left"
+        ariahidden="true"></span>
+         <span class="sr-only">Poprzedni</span>
+        </a>
+        <a class="right carousel-control" href="#carouselID" role="button"
+        data-slide="next">
+         <span class="glyphicon glyphicon-chevron-right"
+        ariahidden="true"></span>
+         <span class="sr-only">Następny</span>
+        </a> 
+
+      </div>
+
+    </div>
+
+</header> 
+
+
+
+
+
+<section id="two-page">
+
+<div class="container">
+
+<h1 class="text-success">Dane Kontaktowe</h1>
+
+<p>
+
+Imię: <b>Szymon</b> <br>
+
+Nazwisko:<b>Wysocki</b> <br>
+
+Indeks: <b>18938</b> <br>
+
+E-mail: <b>18938@student.pwsz.elblag.pl</b> <br>
+
+</p>
+
+<div class="row">
+
+<div class="col-sm-4">
+
+<a href="https://pwsz.elblag.pl/">
+
+<img src="strona.png" class="img-circle img-responsive">
+
+</a>
+
+<h3 class="text-center text-primary">Strona Uczelni</h3>
+
+</div>
+
+
+
+<div class="col-sm-4">
+
+<a href="#" data-toggle="modal" data-target="#myOptions">
+
+<img src="options.jpg" class="img-circle img-responsive">
+
+</a>
+
+<h3 class="text-center text-warning">Opcje</h3>
+
+</div>
+
+
+
+<div class="col-sm-4">
+
+<a href="#" data-toggle="modal" data-target="#myAdress">
+
+<img src="gps.jpg" class="img-circle img-responsive">
+
+</a>
+
+<h3 class="text-center text- info">Adress</h3>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+
+
+<div class="container">
+
+<a href="#"  data-toggle="modal" data-target="#myModal">
+
+Polityka prywatności
+
+</a>
+
+</div>
+
+
+
+</footer> 
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+ <div class="modal-dialog" role="document">
+
+ <div class="modal-content">
+
+ 
+
+ <div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" arialabel="Close"><span ariahidden="true">&times;</span></button>
+
+ <h4 class="modal-title" id="myModalLabel">&#9888; Polityka Prywatności &#9888;</h4>
+
+</div> 
+
+ <div class="modal-body">
+
+<h1>&#9760;<b> ZABRANIA SIĘ KOPIOWANIA</b> &#9760;</h1>
+
+<p>
+
+Wszelkie materiały przedstawione na mojej stronie są objęte prawem autorskim i podlegają ochronie na mocy „Ustawy o prawie autorskim i prawach pokrewnych” z dnia 4 lutego 1994 r.
+
+(tekst ujednolicony: Dz.U. 2006 nr 90 poz. 631).
+
+<br><br>
+
+Kopiowanie, przetwarzanie, rozpowszechnianie tych materiałów w całości lub w części bez zgody autora jest zabronione. &#9786;&#9786;&#9786;
+
+</p>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+
+</div> 
+
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="modal fade" id="myAdress" tabindex="-1" role="dialog" aria-labelledby="myAdresslLabel">
+
+ <div class="modal-dialog" role="document">
+
+ <div class="modal-content">
+
+ 
+
+ <div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" arialabel="Close"><span ariahidden="true">&times;</span></button>
+
+ <h4 class="modal-title" id="myModalLabel">Adres Uczelni</h4>
+
+</div> 
+
+ <div class="modal-body">
+
+<h3>Wojska Polskiego 1, 82-300 Elbląg </h3>
+
+<img src="adres.png" class="img-responsive">
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+</div> 
+
+
+
+</div>
+
+</div>
+
+</div>
+
+ 
+
+
+
+<div class="modal fade" id="myOptions" tabindex="-1" role="dialog" aria-labelledby="myOptionsLabel">
+
+ <div class="modal-dialog" role="document">
+
+ <div class="modal-content">
+
+ 
+
+ <div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" arialabel="Close"><span ariahidden="true">&times;</span></button>
+
+ <h4 class="modal-title" id="myModalLabel">ustawienia</h4>
+
+</div> 
+
+ <div class="modal-body">
+
+<h3>narazie nie można zmienić ustawień </h3>
+
+
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+</div> 
+
+
+
+</div>
+
+</div>
+
+</div>
+
+ 
+
+
+
+
+
+  <!-- JavaScript plugins (requires jQuery) -->
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+
+
+
+  <!-- Optionally enable responsive features in IE8 -->
+
+</body>
+
+</html>
